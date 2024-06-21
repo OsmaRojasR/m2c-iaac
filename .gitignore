@@ -1,0 +1,43 @@
+# Ignorar la carpeta de configuración local de Terraform
+.terraform/
+.terraform.*
+# Ignorar archivos de estado local que pueden contener información sensible
+*.tfstate
+*.tfstate.*
+
+# Ignorar archivos de configuración de plan de Terraform
+*.tfplan
+*.tfplan.*
+
+# Ignorar archivos de configuración de salida de Terraform
+*.tfvars
+*.auto.tfvars
+
+# Ignorar archivos de salida de log
+crash.log
+terraform.log
+
+# Ignorar archivos de configuración de override
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignorar archivos temporales creados por editores de texto
+*.bak
+*.swp
+*.swp?
+*.tmp
+
+# Ignorar directorios de IDE/editor
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Ignorar archivos sensibles de credenciales
+*.pem
+*.key
+
+# Ignorar archivos de configuración específicos del sistema
+.DS_Store
+Thumbs.db
