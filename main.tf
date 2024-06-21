@@ -5,7 +5,7 @@ provider "google" {
 }
 
 module "vpc" {
-  source       = "./modules/vpc"
+  source       = "./modules/network/vpc"
   project_id   = var.project_id
   network_name = var.network_name
   region       = var.region
@@ -14,7 +14,7 @@ module "vpc" {
 }
 
 module "firewall" {
-  source       = "./modules/security"
+  source       = "./modules/network/security"
   network      = module.vpc.vpc_id
   network_name = var.network_name
 }

@@ -6,7 +6,7 @@ resource "google_compute_ha_vpn_gateway" "ha_vpn_gateway" {
 
 resource "google_compute_external_vpn_gateway" "external_gateway" {
   name = var.external_gateway_name
-  redundancy_type = "FOUR_IPS_REDUNDANCY"
+  redundancy_type = "TWO_IPS_REDUNDANCY"
 
   interface {
     id         = 0
