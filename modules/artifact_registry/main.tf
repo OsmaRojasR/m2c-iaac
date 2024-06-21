@@ -1,5 +1,5 @@
 resource "google_artifact_registry_repository" "my-repo" {
-  location      = "us-central1"
+  location      = "var.region"
   repository_id = "m2c-${var.enviroment}-repository-docker-${var.service_name}"
   description   = "Repositorio de Imagenes Docker del servicio ${var.service_name}"
   format        = "DOCKER"

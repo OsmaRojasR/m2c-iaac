@@ -14,7 +14,7 @@ resource "google_monitoring_alert_policy" "alert_policy" {
   conditions {
     display_name = "test condition"
     condition_threshold {
-      filter     = "logName="projects/came-devops-qa-421116/logs/clouddeploy.googleapis.com%2Frollout_update" AND resource.type="clouddeploy.googleapis.com/DeliveryPipeline" AND resource.labels.pipeline_id="m2c-qa-servdocuments-pipeline" AND resource.labels.location="us-central1" AND jsonPayload.rolloutUpdateType="APPROVAL_REQUIRED""
+      filter     = "logName="projects/came-devops-qa-421116/logs/clouddeploy.googleapis.com%2Frollout_update" AND resource.type="clouddeploy.googleapis.com/DeliveryPipeline" AND resource.labels.pipeline_id="m2c-qa-servdocuments-pipeline" AND resource.labels.location="${var.region}" AND jsonPayload.rolloutUpdateType="APPROVAL_REQUIRED""
       duration   = "60s"
       comparison = "COMPARISON_GT"
       aggregations {
