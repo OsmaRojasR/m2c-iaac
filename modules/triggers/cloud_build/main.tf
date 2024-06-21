@@ -1,6 +1,6 @@
 resource "google_cloudbuild_trigger" "filename-trigger" {
 name = "m2c-${var.enviroment}-trigger-${var.service_name}"
-  location = "${var.region}"
+  location = var.region
 
   trigger_template {
     branch_name = "master"
@@ -12,7 +12,7 @@ name = "m2c-${var.enviroment}-trigger-${var.service_name}"
 
 resource "google_cloudbuild_worker_pool" "pool" {
   name = "m2c-${var.enviroment}-worker-pool-${var.service_name}"
-  location = "${var.region}"
+  location = var.region
   worker_config {
     disk_size_gb = 100
     machine_type = "e2-standard-4"

@@ -1,5 +1,5 @@
 resource "google_clouddeploy_delivery_pipeline" "primary" {
-  location    = "${var.region}"
+  location    = var.region
   name        = "m2c-${var.enviroment}-pipeline-${var.service_name}"
   description = "Basic-pipeline"
   project     = "var.project_id"
