@@ -1,4 +1,5 @@
 project_id = "came-devops-qa-421116"
+project_name = "m2c-qa"
 network_name = "m2c-vpc-qa"
 region = "us-central1"
 zone = "us-central1-a"

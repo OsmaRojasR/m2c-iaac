@@ -1,4 +1,5 @@
 project_id = "came-devops-dev-423320"
+project_name = "m2c-dev"
 network_name = "m2c-vpc-dev"
 region = "us-central1"
 zones = ["us-central1-a,us-central1-b,us-central1-c"]

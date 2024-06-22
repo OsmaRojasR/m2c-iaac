@@ -1,5 +1,5 @@
 resource "google_cloudbuild_trigger" "filename-trigger" {
-name = "m2c-${var.enviroment}-trigger-${var.service_name}"
+  name = "${var.project_name}-trigger-${var.service_name}"
   location = var.region
 
   trigger_template {
@@ -11,7 +11,7 @@ name = "m2c-${var.enviroment}-trigger-${var.service_name}"
 }
 
 resource "google_cloudbuild_worker_pool" "pool" {
-  name = "m2c-${var.enviroment}-worker-pool-${var.service_name}"
+  name = "${var.project_name}-worker-pool-${var.service_name}"
   location = var.region
   worker_config {
     disk_size_gb = 100
@@ -19,6 +19,6 @@ resource "google_cloudbuild_worker_pool" "pool" {
     no_external_ip = false
   }
   network_config {
-    peered_network = {var.network_name}
+    peered_network = var.network_name
   }
 }

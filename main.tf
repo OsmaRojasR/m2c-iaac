@@ -31,3 +31,50 @@ module "vpn" {
   peer_ip_1            = var.peer_ip_1
   shared_secret        = var.shared_secret
 }
+
+module "pipelines" {
+  source       = "./modules/pipelines"
+  project_id = var.project_id
+  project_name = var.project_name
+  region = var.region
+  service_name = "servdocuments"
+}
+
+module "notification" {
+  source = "./modules/notifications"
+  project_id = var.project_id
+  region = var.region
+  pipeline_id = module.pipelines.pipeline_id
+  email = "eduardo.lozano@beyondtech.consulting"
+}
+
+module "cloudbuild" {
+  source = "./modules/triggers/cloud_build"
+  project_name = var.project_name
+  region = var.region
+  network_name = var.network_name
+  service_name = "servdocuments"
+}
+
+module "artifact_registry" {
+  source = "./modules/artifact_registry"
+  project_name = var.project_name
+  region = var.region  
+  service_name = "servdocuments"
+  keep_n_versions = 3
+}
+module "vm" {
+  source       = "./modules/compute/vm"
+  project_id   = var.project_id
+  instance_name = "m2c-vm-bastion"
+  region = var.region
+  zone         = var.zones[0]
+  network_name = var.network_name
+  subnetwork = var.subnets[0]
+  subnets = var.subnet_cidrs
+}
+
+module "storage" {
+  source       = "./modules/storage"
+  project_name = var.project_name
+}
