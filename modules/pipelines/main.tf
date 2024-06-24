@@ -1,19 +1,29 @@
 resource "google_clouddeploy_delivery_pipeline" "primary" {
-  provider    = "google-beta"
-  location    = var.region
   name        = "${var.project_name}-pipeline-${var.service_name}"
-  description = "Basic-pipeline"
   project     = var.project_id
+  region      = var.region
+  description = "Basic-pipeline"
 
   serial_pipeline {
     stages {
-
-      profiles  = ["example-profile-one"]
-      target_id = "${var.project_name}-target-${var.service_name}"
+      target_id = google_clouddeploy_target.target.id
+      profiles  = ["default"]
     }
   }
-  labels = {
-    my_first_label = "example-label-1"
-    my_second_label = "example-label-2"
+}
+
+
+
+resource "google_clouddeploy_target" "target" {
+  name        = "${var.project_name}-target-${var.service_name}"
+  project     = var.project_id
+  region      = var.region
+  description = "Deploy target for m2c-destiny"
+
+  require_approval = true
+
+  run {
+    location   = var.region
+    service    = "projects/${var.project_id}/locations/${var.region}/services/my-cloud-run-service"
   }
 }

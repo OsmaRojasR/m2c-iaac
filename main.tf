@@ -56,7 +56,7 @@ module "workerpool" {
   service_name = "workerpool"
 }
 
-#############################################
+### Componentes para Despliegue Continuo
 
 module "cloudbuild" {
   source = "./modules/triggers/cloud_build"
