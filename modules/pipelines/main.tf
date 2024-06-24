@@ -12,8 +12,6 @@ resource "google_clouddeploy_delivery_pipeline" "primary" {
   }
 }
 
-
-
 resource "google_clouddeploy_target" "target" {
   name        = "${var.project_name}-target-${var.service_name}"
   project     = var.project_id
@@ -23,7 +21,6 @@ resource "google_clouddeploy_target" "target" {
   require_approval = true
 
   run {
-    location   = var.region
-    service    = "projects/${var.project_id}/locations/${var.region}/services/my-cloud-run-service"
+    location    = "projects/${var.project_id}/locations/${var.region}"
   }
 }

@@ -15,7 +15,7 @@ resource "google_artifact_registry_repository" "my-repo" {
     id     = "Eliminado Condicional"
     action = "DELETE"
     condition {
-      older_than   = "7d"
+      older_than   = "2592000s"
     }
   }
 }
