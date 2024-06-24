@@ -1,7 +1,7 @@
 resource "google_clouddeploy_delivery_pipeline" "primary" {
   name        = "${var.project_name}-pipeline-${var.service_name}"
   project     = var.project_id
-  region      = var.region
+  location      = var.region
   description = "Basic-pipeline"
 
   serial_pipeline {
@@ -17,7 +17,7 @@ resource "google_clouddeploy_delivery_pipeline" "primary" {
 resource "google_clouddeploy_target" "target" {
   name        = "${var.project_name}-target-${var.service_name}"
   project     = var.project_id
-  region      = var.region
+  location      = var.region
   description = "Deploy target for m2c-destiny"
 
   require_approval = true
