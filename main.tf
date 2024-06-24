@@ -59,9 +59,9 @@ module "workerpool" {
 ### Componentes para Despliegue Continuo
 
 module "cloudbuild" {
-  source = "./modules/triggers/cloud_build"
+  source       = "./modules/triggers/cloud_build"
   project_name = var.project_name
-  region = var.region
+  region       = var.region
   network_name = var.network_name
   service_name = var.service_names[count.index]
   count        = length(var.service_names)
@@ -69,24 +69,24 @@ module "cloudbuild" {
 
 module "pipelines" {
   source       = "./modules/pipelines"
-  project_id = var.project_id
+  project_id   = var.project_id
   project_name = var.project_name
-  region = var.region
+  region       = var.region
   service_name = "servdocuments"
 }
 
 module "notification" {
-  source = "./modules/notifications"
-  project_id = var.project_id
-  region = var.region
+  source      = "./modules/notifications"
+  project_id  = var.project_id
+  region      = var.region
   pipeline_id = module.pipelines.pipeline_id
-  email = "eduardo.lozano@beyondtech.consulting"
+  email       = "eduardo.lozano@beyondtech.consulting"
 }
 
 module "artifact_registry" {
-  source = "./modules/artifact_registry"
-  project_name = var.project_name
-  region = var.region  
-  service_name = "servdocuments"
+  source          = "./modules/artifact_registry"
+  project_name    = var.project_name
+  region          = var.region  
+  service_name    = "servdocuments"
   keep_n_versions = 3
 }
