@@ -5,14 +5,14 @@ resource "google_artifact_registry_repository" "my-repo" {
   format        = "DOCKER"
   cleanup_policy_dry_run = false
   cleanup_policies {
-    id     = "Conservacion Condicional "
+    id     = "conservacion-condicional "
     action = "KEEP"
     most_recent_versions {
       keep_count            = var.keep_n_versions
     }
   }
   cleanup_policies {
-    id     = "Eliminado Condicional"
+    id     = "eliminado-condicional"
     action = "DELETE"
     condition {
       older_than   = "2592000s"
