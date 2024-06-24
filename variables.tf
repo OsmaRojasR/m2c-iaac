@@ -67,3 +67,9 @@ variable "shared_secret" {
   description = "The shared secret for the VPN connection"
   type        = string
 }
+
+variable "service_names" {
+  description = "List of service names to iterate over"
+  type        = list(string)
+  default     = ["servdocuments", "simple_pipeline"]
+}
