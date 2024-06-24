@@ -53,7 +53,7 @@ module "workerpool" {
   project_name = var.project_name
   region = var.region
   network_name = var.network_name
-  service_name = "servdocuments"
+  service_name = "workerpool"
 }
 
 #############################################

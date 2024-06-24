@@ -71,5 +71,5 @@ variable "shared_secret" {
 variable "service_names" {
   description = "List of service names to iterate over"
   type        = list(string)
-  default     = ["servdocuments", "simple_pipeline"]
+  default     = ["servdocuments", "simplepipeline"]
 }
