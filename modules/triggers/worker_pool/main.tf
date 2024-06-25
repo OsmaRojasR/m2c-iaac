@@ -7,6 +7,6 @@ resource "google_cloudbuild_worker_pool" "pool" {
     no_external_ip = false
   }
   network_config {
-    peered_network = google_compute_network.network.id
+    peered_network = var.network_name
   }
 }
