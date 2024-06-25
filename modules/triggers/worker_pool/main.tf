@@ -1,5 +1,5 @@
 resource "google_cloudbuild_worker_pool" "pool" {
-  name = "${lower(replace(var.project_name, "/[^a-z0-9-]/", "-"))}-worker-pool"
+  name = "m2c-dev-worker-pool"
   location = var.region
   worker_config {
     disk_size_gb = 100
@@ -7,6 +7,6 @@ resource "google_cloudbuild_worker_pool" "pool" {
     no_external_ip = false
   }
   network_config {
-    peered_network = var.network_name
+    peered_network = google_compute_network.network.id
   }
 }
