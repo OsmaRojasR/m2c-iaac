@@ -1,5 +1,5 @@
 resource "google_clouddeploy_delivery_pipeline" "primary" {
-  name        = "${lower(replace(var.project_name, "/[^a-z0-9-]/", "-"))}-pipeline"
+  name        = "m2c-delivery-pipeline"  
   project     = var.project_id
   location      = var.region
   description = "Basic-pipeline"
@@ -13,7 +13,7 @@ resource "google_clouddeploy_delivery_pipeline" "primary" {
 }
 
 resource "google_clouddeploy_target" "target" {
-  name        = "${lower(replace(var.project_name, "/[^a-z0-9-]/", "-"))}-target"
+  name        = "m2c-delivery-pipeline"
   project     = var.project_id
   location      = var.region
   description = "Deploy target for m2c-destiny"
