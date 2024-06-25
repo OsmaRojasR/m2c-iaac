@@ -45,11 +45,6 @@ variable "disk_size" {
   default     = 10
 }
 
-variable "subnetwork" {
-  description = "The subnetwork for networking interface"
-  type        = string
-}
-
 variable "preemptible" {
   description = "Defines if the instance should be preemptible"
   type        = bool

@@ -23,7 +23,7 @@ module "vpn" {
   source               = "./modules/network/vpn"
   vpn_gateway_name     = var.vpn_gateway_name
   region               = var.region
-  network              = var.network_name
+  network              = module.vpc.vpc_id
   vpn_gateway_asn      = var.vpn_peer_asn - 2
   vpn_peer_asn         = var.vpn_peer_asn
   external_gateway_name = var.external_gateway_name
@@ -37,10 +37,9 @@ module "vm" {
   project_id   = var.project_id
   instance_name = "m2c-vm-bastion"
   region = var.region
-  zone         = var.zones[0]
+  zone         = var.zone
   network_name = var.network_name
-  subnetwork = var.subnets[0]
-  subnets = var.subnet_cidrs
+  subnets = var.subnets
 }
 
 module "storage" {

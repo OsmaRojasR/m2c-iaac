@@ -13,9 +13,9 @@ variable "region" {
   type        = string
 }
 
-variable "zones" {
-  description = "A list of zones in which to create resources"
-  type        = list(string)
+variable "zone" {
+  description = "Zone in which to create resources"
+  type        = string
 }
 
 variable "credentials_file" {

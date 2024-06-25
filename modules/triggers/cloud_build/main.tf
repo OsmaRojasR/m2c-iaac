@@ -1,5 +1,5 @@
 resource "google_cloudbuild_trigger" "filename-trigger" {
-  name = "${var.project_name}-trigger-${var.service_name}"
+  name = var.project_name
   location = var.region
 
   trigger_template {

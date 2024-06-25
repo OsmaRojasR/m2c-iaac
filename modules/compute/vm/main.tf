@@ -3,7 +3,7 @@ resource "google_compute_instance" "bastion" {
 
   name         = "${var.instance_name}-${each.key}"
   machine_type = var.machine_type
-  zone         = var.zone[0]
+  zone         = var.zone
 
   boot_disk {
     auto_delete = true
