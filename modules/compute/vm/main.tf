@@ -1,13 +1,12 @@
 resource "google_compute_instance" "bastion" {
-  for_each = { for idx, subnet in var.subnets : idx => subnet }
-
-  name         = "${var.instance_name}-${each.key}"
+  count        = length(var.subnets)
+  name         = "${var.instance_name}-${count.index}"
   machine_type = var.machine_type
   zone         = var.zone
 
   boot_disk {
     auto_delete = true
-    device_name = "${var.instance_name}-${each.key}"
+    device_name = "${var.instance_name}-${count.index}"
 
     initialize_params {
       image = var.image
@@ -33,7 +32,7 @@ resource "google_compute_instance" "bastion" {
 
     queue_count = 0
     stack_type  = "IPV4_ONLY"
-    subnetwork  = "projects/${var.project_id}/regions/${var.region}/subnetworks/${each.value}"
+    subnetwork  = "projects/${var.project_id}/regions/${var.region}/subnetworks/${element(var.subnets, count.index)}"
   }
 
   scheduling {
