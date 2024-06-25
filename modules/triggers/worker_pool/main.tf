@@ -1,5 +1,5 @@
 resource "google_cloudbuild_worker_pool" "pool" {
-  name = "${var.project_name}-worker-pool"
+  name = "${lower(replace(var.project_name, "/[^a-z0-9-]/", "-"))}-worker-pool"
   location = var.region
   worker_config {
     disk_size_gb = 100
