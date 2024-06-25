@@ -19,7 +19,7 @@ resource "google_clouddeploy_delivery_pipeline" "deploy_primary" {
   provider    = google-beta
   serial_pipeline {
     stages {
-      target_id = google_clouddeploy_target.target.id
+      target_id = google_clouddeploy_target.deploy_target.id
       profiles  = ["default"]
     }
   }
