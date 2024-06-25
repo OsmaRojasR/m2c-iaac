@@ -33,6 +33,7 @@ resource "google_compute_vpn_tunnel" "tunnel_0" {
   name                  = "${var.vpn_gateway_name}-tunnel-0"
   region                = var.region
   vpn_gateway           = google_compute_ha_vpn_gateway.ha_vpn_gateway.id
+  vpn_gateway_interface = 0
   peer_external_gateway = google_compute_external_vpn_gateway.external_gateway.id
   shared_secret         = var.shared_secret
   router                = google_compute_router.router.name
@@ -42,6 +43,7 @@ resource "google_compute_vpn_tunnel" "tunnel_1" {
   name                  = "${var.vpn_gateway_name}-tunnel-1"
   region                = var.region
   vpn_gateway           = google_compute_ha_vpn_gateway.ha_vpn_gateway.id
+  vpn_gateway_interface = 1
   peer_external_gateway = google_compute_external_vpn_gateway.external_gateway.id
   shared_secret         = var.shared_secret
   router                = google_compute_router.router.name
