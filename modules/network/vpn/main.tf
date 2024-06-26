@@ -30,23 +30,25 @@ resource "google_compute_router" "router" {
 }
 
 resource "google_compute_vpn_tunnel" "tunnel_0" {
-  name                  = "${var.vpn_gateway_name}-tunnel-0"
-  region                = var.region
-  vpn_gateway           = google_compute_ha_vpn_gateway.ha_vpn_gateway.id
-  vpn_gateway_interface = 0
-  peer_external_gateway = google_compute_external_vpn_gateway.external_gateway.id
-  shared_secret         = var.shared_secret
-  router                = google_compute_router.router.name
+  name                      = "${var.vpn_gateway_name}-tunnel-0"
+  region                    = var.region
+  vpn_gateway               = google_compute_ha_vpn_gateway.ha_vpn_gateway.id
+  vpn_gateway_interface     = 0
+  peer_external_gateway     = google_compute_external_vpn_gateway.external_gateway.id
+  peer_external_gateway_interface = 0
+  shared_secret             = var.shared_secret
+  router                    = google_compute_router.router.name
 }
 
 resource "google_compute_vpn_tunnel" "tunnel_1" {
-  name                  = "${var.vpn_gateway_name}-tunnel-1"
-  region                = var.region
-  vpn_gateway           = google_compute_ha_vpn_gateway.ha_vpn_gateway.id
-  vpn_gateway_interface = 1
-  peer_external_gateway = google_compute_external_vpn_gateway.external_gateway.id
-  shared_secret         = var.shared_secret
-  router                = google_compute_router.router.name
+  name                      = "${var.vpn_gateway_name}-tunnel-1"
+  region                    = var.region
+  vpn_gateway               = google_compute_ha_vpn_gateway.ha_vpn_gateway.id
+  vpn_gateway_interface     = 1
+  peer_external_gateway     = google_compute_external_vpn_gateway.external_gateway.id
+  peer_external_gateway_interface = 1
+  shared_secret             = var.shared_secret
+  router                    = google_compute_router.router.name
 }
 
 resource "google_compute_router_peer" "bgp_peer_0" {
