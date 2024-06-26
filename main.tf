@@ -65,7 +65,6 @@ module "cloudbuild" {
   source       = "./modules/triggers/cloud_build"
   project_name = var.project_name
   region       = var.region
-  network_name = var.network_name
   service_name = var.service_names[count.index]
   count        = length(var.service_names)
 }

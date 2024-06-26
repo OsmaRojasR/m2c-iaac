@@ -8,11 +8,6 @@ variable "service_name" {
   type        = string
 }
 
-variable "network_name" {
-  description = "Name of the VPC"
-  type        = string
-}
-
 variable "region" {
   description = "Region of the pipeline"
   type        = string
