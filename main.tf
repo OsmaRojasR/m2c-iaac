@@ -52,11 +52,11 @@ module "storage" {
 }
 
 module "workerpool" {
-  source = "./modules/triggers/worker_pool"
-  project_id = var.project_id
+  source = "./modules/triggers/worker_pool"  
   region = var.region
-  network_name = var.network_name
+  network_id = module.vpc.vpc_id
   service_name = var.project_name
+  depends_on = [ module.vpc ]
 }
 
 ### Componentes para Despliegue Continuo
