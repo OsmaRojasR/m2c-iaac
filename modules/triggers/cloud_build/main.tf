@@ -1,9 +1,13 @@
-resource "google_cloudbuild_trigger" "filename-trigger" {
+resource "google_cloudbuild_trigger" "github_trigger" {
+  name = "m2c-dev-trigger-${var.service_name}"
   location = "us-central1"
 
-  trigger_template {
-    branch_name = "master"
-    repo_name   = "JesusELozanoR/m2c-servdocuments"
+  github {
+    owner       = "JesusELozanoR"
+    name        = "m2c-servdocuments"
+    push {
+      branch = "^master$"
+    }
   }
 
   filename = "cloudbuild.yaml"
