@@ -1,4 +1,4 @@
-resource "google_cloudbuild_trigger" "github_trigger" {
+resource "google_cloudbuild_trigger" "filename-trigger" {
   name = "m2c-dev-trigger-${var.service_name}"
   location = "us-central1"
 
