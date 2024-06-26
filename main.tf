@@ -17,6 +17,7 @@ module "firewall" {
   source       = "./modules/network/security"
   network      = module.vpc.vpc_id
   network_name = var.network_name
+  depends_on = [ module.vpc ]
 }
 
 module "vpn" {
@@ -30,6 +31,8 @@ module "vpn" {
   peer_ip_0            = var.peer_ip_0
   peer_ip_1            = var.peer_ip_1
   shared_secret        = var.shared_secret
+
+  depends_on = [ module.vpc ]
 }
 
 module "vm" {
@@ -40,6 +43,7 @@ module "vm" {
   zone         = var.zone
   network_name = var.network_name
   subnets = var.subnets
+  depends_on = [ module.vpc, module.firewall ]
 }
 
 module "storage" {
@@ -49,10 +53,10 @@ module "storage" {
 
 module "workerpool" {
   source = "./modules/triggers/worker_pool"
-  project_name = var.project_name
+  project_id = var.project_id
   region = var.region
   network_name = var.network_name
-  service_name = "workerpool"
+  service_name = var.project_name
 }
 
 ### Componentes para Despliegue Continuo
