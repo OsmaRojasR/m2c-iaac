@@ -53,9 +53,9 @@ module "storage" {
 
 module "workerpool" {
   source = "./modules/triggers/worker_pool"  
+  project_id = var.project_id
+  network_name = var.network_name
   region = var.region
-  network_id = module.vpc.vpc_id
-  service_name = var.project_name
   depends_on = [ module.vpc ]
 }
 

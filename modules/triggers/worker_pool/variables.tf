@@ -1,12 +1,13 @@
-variable "service_name" {
-  description = "Service Name"
+variable "project_id" {
+  description = "GCP Project ID"
+  type        = number
+}
+
+variable "network_name" {
+  description = "Network Name"
   type        = string
 }
 
-variable "network_id" {
-  description = "ID of the VPC"
-  type        = string
-}
 
 variable "region" {
   description = "Region of the pipeline"
