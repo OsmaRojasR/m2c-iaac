@@ -51,7 +51,7 @@ module "workerpool" {
   source = "./modules/triggers/worker_pool"
   project_name = var.project_name
   region = var.region
-  network_name = module.vpc.vpc_id
+  network_name = var.network_name
   service_name = "workerpool"
 }
 
