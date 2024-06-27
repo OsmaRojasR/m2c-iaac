@@ -63,10 +63,13 @@ module "workerpool" {
 
 module "cloudbuild" {
   source       = "./modules/triggers/cloud_build"
-  project_name = var.project_name
+  project_id   = var.project_id
   region       = var.region
-  service_name = var.service_names[count.index]
-  count        = length(var.service_names)
+  service_name = "service-docs"
+  github_app_installation_id = var.github_app_installation_id
+  github_owner = var.github_owner
+  github_repo = var.github_repo
+  github_token_access = var.github_token_access
 }
 
 module "pipelines" {
