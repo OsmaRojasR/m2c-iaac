@@ -56,7 +56,8 @@ module "workerpool" {
   project_id = var.project_id
   network_name = var.network_name
   region = var.region
-  depends_on = [ module.vpc ]
+
+  depends_on = [ module.vpc, module.firewall ]
 }
 
 ### Componentes para Despliegue Continuo

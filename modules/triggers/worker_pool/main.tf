@@ -8,6 +8,5 @@ resource "google_cloudbuild_worker_pool" "pool" {
   }
   network_config {
     peered_network = "projects/${var.project_id}/global/networks/${var.network_name}"
-    peered_network_ip_range = "/29"
   }
 }
