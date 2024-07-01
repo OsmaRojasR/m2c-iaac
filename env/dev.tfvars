@@ -8,3 +8,4 @@ subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24", "10.
 credentials_file = "~/.config/gcloud/application_default_credentials.json"
 vpn_gateway_name = "m2c-vpn-gateway"
 external_gateway_name = "m2c-external-gateway"
+services_names     = ["servdocuments", "servnomina"]
