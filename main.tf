@@ -53,6 +53,7 @@ module "storage" {
 
 module "workerpool" {
   source = "./modules/triggers/worker_pool"  
+  project_name = var.project_name
   project_id = var.project_id
   network_name = var.network_name
   region = var.region
@@ -63,14 +64,11 @@ module "workerpool" {
 ### Componentes para Despliegue Continuo
 
 module "cloudbuild" {
+  for_each     = toset(var.services_names)
   source       = "./modules/triggers/cloud_build"
-  project_id   = var.project_id
+  project_name = var.project_name
   region       = var.region
-  service_name = "service-docs"
-  github_app_installation_id = var.github_app_installation_id
-  github_owner = var.github_owner
-  github_repo = var.github_repo
-  github_token_access = var.github_token_access
+  service_name = each.key
 }
 
 module "pipelines" {
@@ -78,7 +76,7 @@ module "pipelines" {
   project_id   = var.project_id
   project_name = var.project_name
   region       = var.region
-  service_name = "servdocuments"
+  service_name = ${var.services_names[0]}
 }
 
 module "notification" {
