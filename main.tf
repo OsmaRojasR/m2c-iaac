@@ -82,9 +82,10 @@ module "pipelines" {
 module "notification" {
   source      = "./modules/notifications"
   project_id  = var.project_id
+  project_name = var.project_name
   region      = var.region
-  pipeline_id = module.pipelines.pipeline_id
-  email       = "eduardo.lozano@beyondtech.consulting"
+  service_name = var.services_names[0]
+  emails       = var.emails
 }
 
 module "artifact_registry" {

@@ -1,6 +1,6 @@
-variable "email" {
-  description = "Service Name"
-  type        = string
+variable "emails" {
+  description = "List of emails of approvers"
+  type        = list(string)
 }
 
 variable "project_id" {
@@ -8,12 +8,17 @@ variable "project_id" {
   type        = string
 }
 
-variable "pipeline_id" {
-  description = "Name of the pipeline"
+variable "project_name" {
+  description = "The name of the project"
   type        = string
 }
 
 variable "region" {
   description = "Region of the pipeline"
+  type        = string
+}
+
+variable "service_name" {
+  description = "Service Name"
   type        = string
 }
