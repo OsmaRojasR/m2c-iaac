@@ -60,36 +60,17 @@
 # }
 
 
+resource "google_cloudbuild_trigger" "include_build_logs_trigger" {
 
-
-resource "google_cloudbuildv2_connection" "my-connection" {
-  location = "us-central1"
-  name = "my-connection"
-
-  github_config {
-    app_installation_id = var.github_app_installation_id
-    authorizer_credential {
-      oauth_token_secret_version = google_secret_manager_secret_version.github_token_secret_version.id
-    }
-  }
-}
-
-resource "google_cloudbuildv2_repository" "my-repository" {
-  name = "my-repo"
-  parent_connection = google_cloudbuildv2_connection.my-connection.id
-  remote_uri = "https://github.com/${var.github_owner}/${var.github_repo}.git"
-}
-
-resource "google_cloudbuild_trigger" "repo-trigger" {
-  name     = "m2c-dev-trigger-${var.service_name}"
   location = var.region
+  name     = "${var.project_name}-trigger-${var.service_name}"
+  filename = "cloudbuild.yaml"
 
-  repository_event_config {
-    repository = google_cloudbuildv2_repository.my-repository.id
+  github {
+    owner = "JesusELozanoR"
+    name  = "m2c-servdocuments"
     push {
       branch = "^master$"
     }
   }
-
-  filename = "cloudbuild.yaml"
 }

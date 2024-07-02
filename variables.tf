@@ -68,10 +68,9 @@ variable "shared_secret" {
   type        = string
 }
 
-variable "service_names" {
+variable "services_names" {
   description = "List of service names to iterate over"
   type        = list(string)
-  default     = ["servdocuments", "simplepipeline"]
 }
 
 variable "github_owner" {
