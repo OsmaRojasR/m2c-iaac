@@ -76,7 +76,7 @@ module "pipelines" {
   project_id   = var.project_id
   project_name = var.project_name
   region       = var.region
-  service_name = ${var.services_names[0]}
+  service_name = var.services_names[0]
 }
 
 module "notification" {
