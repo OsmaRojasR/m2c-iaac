@@ -73,6 +73,11 @@ variable "services_names" {
   type        = list(string)
 }
 
+variable "emails" {
+  description = "List of emails of approvers"
+  type        = list(string)
+}
+
 variable "github_owner" {
   description = "The GitHub repository owner"
   type        = string

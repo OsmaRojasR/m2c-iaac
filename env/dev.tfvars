@@ -9,3 +9,4 @@ credentials_file = "~/.config/gcloud/application_default_credentials.json"
 vpn_gateway_name = "m2c-vpn-gateway"
 external_gateway_name = "m2c-external-gateway"
 services_names     = ["servdocuments", "servnomina"]
+emails = ["eduardo.lozano@beyondtech.consulting", "armando.matias@beyondtech.consulting", "osmar.rojas@beyondtech.consulting"]  
